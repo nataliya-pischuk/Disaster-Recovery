@@ -11,3 +11,6 @@ Cхемa в формате pkt.
 https://github.com/nataliya-pischuk/file/hsrp_advanced.pkt
 
 #### Cкриншоты настройки маршрутизаторов:
+![alt text](/img/router1.jpg)
+
+![alt text](/img/router2.jpg)
