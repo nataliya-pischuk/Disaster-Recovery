@@ -8,5 +8,5 @@
 ### Решение 1
 Cхемa в формате pkt.
 
-file/hsrp_advanced.pkt
+![alt text](https://github.com/nataliya-pischuk/file/hsrp_advanced.pkt)
 Cкриншоты настройки маршрутизаторов:
