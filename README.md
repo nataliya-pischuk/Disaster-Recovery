@@ -8,7 +8,7 @@
 ### Решение 1
 Cхемa в формате pkt.
 
-https://github.com/nataliya-pischuk/Disaster-Recovery/file/hsrp_advanced.pkt
+[https://github.com/nataliya-pischuk/Disaster-Recovery/file/hsrp_advanced.pkt](https://github.com/nataliya-pischuk/Disaster-Recovery/blob/df99b5a5fb06ce311f2fcce7cc93347e3f83fa76/file/hsrp_advanced.pkt)
 
 #### Cкриншоты настройки маршрутизаторов:
 ![alt text](img/router1.JPG)
@@ -25,8 +25,6 @@ https://github.com/nataliya-pischuk/Disaster-Recovery/file/hsrp_advanced.pkt
 ### Настроены две виртуальные машины в соответствии с заданием
 ![alt text](img/master.JPG)
 
-### Tracking script
-keepalived запускает скрипт с определенным интервалом, если скрипт возвращает статус 0, то ничего не происходит, если 1, то keepalived переходит в статус fault.
 #### bash-скрипт
 https://github.com/nataliya-pischuk/Disaster-Recovery/blob/e5a540d8884988379edbc85dfe3969361b8b4ef7/file/nginx_recovery.sh
 
