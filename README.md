@@ -28,4 +28,40 @@ https://github.com/nataliya-pischuk/Disaster-Recovery/file/hsrp_advanced.pkt
 ### Tracking script
 keepalived запускает скрипт с определенным интервалом, если скрипт возвращает статус 0, то ничего не происходит, если 1, то keepalived переходит в статус fault.
 #### bash-скрипт
-https://github.com/nataliya-pischuk/Disaster-Recovery/file/nginx_recovery.sh
+#!bin/bash
+PORT=$(bash -c 'exec 3<> /dev/tcp/127.0.0.1/80;echo $?' 2>/dev/null)
+echo "$PORT"
+echo "$FILE"
+if [[ $PORT -eq 0 && $FILE -eq 0 ]]; then
+  echo "0" > /tmp/track_file
+  exit 0
+else
+  echo "1" > /tmp/track_file
+  exit 1
+fi
+
+#### Конфигурационный файл keepalived с настройкой tracking script
+global_defs {
+  script_user root
+  enable_script_security
+}
+
+vrrp_script str_track {
+script "/tmp/nginx_recovery.sh"
+interval 3
+}
+vrrp_instance VI_1 {
+        state MASTER
+        interface enp0s9
+        virtual_router_id 15
+        priority 200
+        advert_int 1
+
+        virtual_ipaddress {
+              192.168.111.15/24
+        }
+track_script {
+str_track
+}
+}
+![alt text](img/master.JPG)
