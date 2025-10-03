@@ -28,4 +28,4 @@ https://github.com/nataliya-pischuk/file/hsrp_advanced.pkt
 ### Tracking script
 keepalived запускает скрипт с определенным интервалом, если скрипт возвращает статус 0, то ничего не происходит, если 1, то keepalived переходит в статус fault.
 #### bash-скрипт
-https://github.com/nataliya-pischuk/Disaster-Recovery/file/nginx_recovery.sh
+https://github.com/nataliya-pischuk/file/nginx_recovery.sh
