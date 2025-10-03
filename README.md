@@ -23,7 +23,7 @@ https://github.com/nataliya-pischuk/Disaster-Recovery/file/hsrp_advanced.pkt
 На проверку отправьте получившейся bash-скрипт и конфигурационный файл keepalived, а также скриншот с демонстрацией переезда плавающего ip на другой сервер в случае недоступности порта или файла index.html
 
 ### Настроены две виртуальные машины в соответствии с заданием
-![alt text](img/keepalived.JPG)
+![alt text](img/master.JPG)
 
 ### Tracking script
 keepalived запускает скрипт с определенным интервалом, если скрипт возвращает статус 0, то ничего не происходит, если 1, то keepalived переходит в статус fault.
@@ -51,7 +51,7 @@ script "/tmp/nginx_recovery.sh"
 interval 3
 }
 vrrp_instance VI_1 {
-        state MASTER
+        state BACKUP
         interface enp0s9
         virtual_router_id 15
         priority 200
@@ -64,4 +64,4 @@ track_script {
 str_track
 }
 }
-![alt text](img/master.JPG)
+![alt text](img/keepalived.JPG)
