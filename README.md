@@ -28,6 +28,7 @@ https://github.com/nataliya-pischuk/Disaster-Recovery/file/hsrp_advanced.pkt
 ### Tracking script
 keepalived запускает скрипт с определенным интервалом, если скрипт возвращает статус 0, то ничего не происходит, если 1, то keepalived переходит в статус fault.
 #### bash-скрипт
+[file/hsrp_advanced.pkt](https://github.com/nataliya-pischuk/Disaster-Recovery/blob/fc8302778fa62332c97a3958f7bd61a411f373c6/file/keepalived.conf)
 #!bin/bash
 PORT=$(bash -c 'exec 3<> /dev/tcp/127.0.0.1/80;echo $?' 2>/dev/null)
 echo "$PORT"
