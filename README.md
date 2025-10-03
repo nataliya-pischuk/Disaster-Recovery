@@ -28,41 +28,11 @@ https://github.com/nataliya-pischuk/Disaster-Recovery/file/hsrp_advanced.pkt
 ### Tracking script
 keepalived запускает скрипт с определенным интервалом, если скрипт возвращает статус 0, то ничего не происходит, если 1, то keepalived переходит в статус fault.
 #### bash-скрипт
-https://github.com/nataliya-pischuk/Disaster-Recovery/blob/fc8302778fa62332c97a3958f7bd61a411f373c6/file/keepalived.conf
-#!bin/bash
-PORT=$(bash -c 'exec 3<> /dev/tcp/127.0.0.1/80;echo $?' 2>/dev/null)
-echo "$PORT"
-echo "$FILE"
-if [[ $PORT -eq 0 && $FILE -eq 0 ]]; then
-  echo "0" > /tmp/track_file
-  exit 0
-else
-  echo "1" > /tmp/track_file
-  exit 1
-fi
+https://github.com/nataliya-pischuk/Disaster-Recovery/blob/e5a540d8884988379edbc85dfe3969361b8b4ef7/file/nginx_recovery.sh
+
 
 #### Конфигурационный файл keepalived с настройкой tracking script
-global_defs {
-  script_user root
-  enable_script_security
-}
+https://github.com/nataliya-pischuk/Disaster-Recovery/blob/fc8302778fa62332c97a3958f7bd61a411f373c6/file/keepalived.conf
 
-vrrp_script str_track {
-script "/tmp/nginx_recovery.sh"
-interval 3
-}
-vrrp_instance VI_1 {
-        state BACKUP
-        interface enp0s9
-        virtual_router_id 15
-        priority 200
-        advert_int 1
-
-        virtual_ipaddress {
-              192.168.111.15/24
-        }
-track_script {
-str_track
-}
-}
+#### Результат переезда
 ![alt text](img/keepalived.JPG)
